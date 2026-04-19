@@ -706,6 +706,97 @@
     }
 
     /* ──────────────────────────────────────
+       WRITE A REVIEW
+    ────────────────────────────────────── */
+    .review-form-wrap {
+      max-width: 680px;
+    }
+
+    .review-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.92rem;
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+    }
+
+    .form-group textarea { min-height: 110px; }
+
+    /* Star rating */
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 0.25rem;
+    }
+
+    .star-rating input { display: none; }
+
+    .star-rating label {
+      font-size: 1.8rem;
+      color: var(--border);
+      cursor: pointer;
+      transition: color 0.15s;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: #fbbf24;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ──────────────────────────────────────
        FOOTER
     ────────────────────────────────────── */
     footer {
@@ -730,6 +821,7 @@
       .about-photo-wrap { max-width: 260px; margin: 0 auto; }
       .stats-bar { gap: 2rem; }
       .edu-card { flex-direction: column; gap: 1.25rem; }
+      .form-row { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
@@ -748,6 +840,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Work</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#write-review">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="mailto:123maria0608@gmail.com" class="nav-cta">Hire Me</a>
@@ -1077,6 +1170,55 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ── WRITE A REVIEW ──────────────────────────── -->
+  <div class="full-bleed" id="write-review">
+    <div class="wrap">
+      <p class="section-chip">Leave a Review</p>
+      <h2 class="section-title">Worked With Me?</h2>
+      <p class="section-sub">I'd love to hear what you thought. Your feedback helps other small businesses find the right fit.</p>
+
+      <div class="review-form-wrap">
+        <form class="review-form" action="mailto:123maria0608@gmail.com" method="POST" enctype="text/plain">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rev-name">Your Name</label>
+              <input type="text" id="rev-name" name="Name" placeholder="e.g. Rosa C." required>
+            </div>
+            <div class="form-group">
+              <label for="rev-biz">Business Name</label>
+              <input type="text" id="rev-biz" name="Business" placeholder="e.g. My Taqueria">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Rating</label>
+            <div class="star-rating">
+              <input type="radio" id="s5" name="Rating" value="★★★★★">
+              <label for="s5" title="5 stars">★</label>
+              <input type="radio" id="s4" name="Rating" value="★★★★">
+              <label for="s4" title="4 stars">★</label>
+              <input type="radio" id="s3" name="Rating" value="★★★">
+              <label for="s3" title="3 stars">★</label>
+              <input type="radio" id="s2" name="Rating" value="★★">
+              <label for="s2" title="2 stars">★</label>
+              <input type="radio" id="s1" name="Rating" value="★" checked>
+              <label for="s1" title="1 star">★</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="rev-body">Your Review</label>
+            <textarea id="rev-body" name="Review" placeholder="What was it like working with Maria? What did she build for you?" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Submit Review →</button>
+          <p class="form-note">This will open your email app with your review pre-filled — just hit send.</p>
+        </form>
+      </div>
     </div>
   </div>
 
